@@ -14,5 +14,17 @@ class EncryptionEngineTest < Minitest::Test
 		output = engine.decrypt("Zl Zrffntr")
 		assert_equal "My Message", output
 	end
+
+	def test_it_encrypts_using_rot6
+		engine = EncryptionEngine.new
+		output = engine.encrypt("My Message", 6)
+		assert_equal "Se Skyygmk", output
+	end
+
+	def test_it_decrypts_using_rot6
+		engine = EncryptionEngine.new
+		output = engine.decrypt("Se Skyygmk", 6)
+		assert_equal "My Message", output
+	end
 end
 

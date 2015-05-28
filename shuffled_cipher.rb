@@ -41,8 +41,8 @@ end
 class EncryptionEngine
 
 	def initialize
-		@lowercase = ("a".."z").to_a
-		@uppercase = ("A".."Z").to_a
+		@lowercase = ("a".."z").to_a.shuffle(random: Random.new(1))
+		@uppercase = ("A".."Z").to_a.shuffle(random: Random.new(1))
 	end
 
 	def encrypt(msg, rotation=13)
@@ -58,7 +58,7 @@ puts "Object Based:"
 engine = EncryptionEngine.new
 output = engine.encrypt("My Message")
 puts output  # outputs "Zl Zrffntr"
-output2 = engine.decrypt("Zl Zrffntr")
+output2 = engine.decrypt("Vu Vjhhwlj")
 puts output2 # outputs "My Message"
 
 puts "\n"
@@ -66,5 +66,5 @@ puts "Flexible Rotation:"
 engine = EncryptionEngine.new
 output = engine.encrypt("My Message", 6)
 puts output  # outputs "Zl Zrffntr"
-output2 = engine.decrypt("Zl Zrffntr", 6)
+output2 = engine.decrypt("Ds Dxttmax", 6)
 puts output2 # outputs "My Message"
